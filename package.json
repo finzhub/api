@@ -1,0 +1,26 @@
+{
+  "name": "@finzhub/api",
+  "module": "index.ts",
+  "type": "module",
+  "dependencies": {
+    "@graphql-tools/load-files": "7.0.0",
+    "@graphql-tools/schema": "10.0.0",
+    "graphql": "16.7.1",
+    "graphql-yoga": "4.0.3",
+    "kysely": "0.25.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/add": "5.0.0",
+    "@graphql-codegen/cli": "4.0.1",
+    "@graphql-codegen/typescript": "4.0.1",
+    "@graphql-codegen/typescript-resolvers": "4.0.1",
+    "bun-types": "0.6.13",
+    "typescript": "5.1.6"
+  },
+  "resolutions": {
+    "graphql": "16.7.1"
+  },
+  "scripts": {
+    "codegen": "graphql-codegen --config codegen.ts"
+  }
+}

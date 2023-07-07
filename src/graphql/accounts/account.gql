@@ -1,0 +1,7 @@
+type Account {
+  id: ID!
+}
+
+type Query {
+  account(id: ID!): Account
+}
