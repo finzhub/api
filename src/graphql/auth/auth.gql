@@ -1,0 +1,18 @@
+type Mutation {
+  generateRegistrationOptions(input: RegistrationOptionsInput!): JSONObject!
+
+  verifyRegistration(input: JSONObject!): Boolean!
+
+  generateAuthenticationOptions(input: AuthenticationOptionsInput!): JSONObject!
+
+  verifyAuthentication(input: JSONObject!): Boolean!
+}
+
+input RegistrationOptionsInput {
+  email: String!
+  username: String!
+}
+
+input AuthenticationOptionsInput {
+  identifier: String!
+}

@@ -8,6 +8,13 @@ const config: CodegenConfig = {
       config: {
         useTypeImports: true,
         contextType: "Context",
+        scalars: {
+          JSONObject: "Record<string, unknown>",
+          Void: {
+            input: "never",
+            output: "void",
+          },
+        },
       },
       plugins: [
         "typescript",

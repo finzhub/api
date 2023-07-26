@@ -3,5 +3,5 @@ type Account {
 }
 
 type Query {
-  account(id: ID!): Account
+  account(id: ID!): Account @auth
 }

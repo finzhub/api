@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String       @id @default(cuid()) @db.VarChar(255)
+  email       String       @unique @db.VarChar(255)
+  username    String       @unique @db.VarChar(255)
+  settings    Json         @default("{}") @db.JsonB
+  createdAt   DateTime     @default(now()) @db.Timestamptz
+  updatedAt   DateTime     @updatedAt @db.Timestamptz
+  accounts    Account[]
+  credentials Credential[]
+}
+
+model Credential {
+  id         String   @id @default(cuid()) @db.VarChar(255)
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String   @db.VarChar(255)
+  name       String?  @db.VarChar(255)
+  externalId Bytes    @unique
+  publicKey  Bytes    @unique
+  signCount  Int      @default(0)
+  transports Json     @default("[]") @db.JsonB
+  createdAt  DateTime @default(now()) @db.Timestamptz
+  updatedAt  DateTime @updatedAt @db.Timestamptz
+
+  @@index([externalId])
+}
+
+model Account {
+  id           String        @id @default(cuid()) @db.VarChar(255)
+  name         String        @db.VarChar(255)
+  color        String?       @db.VarChar(255)
+  createdAt    DateTime      @default(now()) @db.Timestamptz
+  updatedAt    DateTime      @updatedAt @db.Timestamptz
+  userId       String        @db.VarChar(255)
+  owner        User          @relation(fields: [userId], references: [id])
+  transactions Transaction[]
+}
+
+model Category {
+  id           String        @id @default(cuid()) @db.VarChar(255)
+  name         String        @unique @db.VarChar(255)
+  color        String?       @db.VarChar(255)
+  parent       Category?     @relation("parent", fields: [parentId], references: [id])
+  parentId     String?       @db.VarChar(255)
+  createdAt    DateTime      @default(now()) @db.Timestamptz
+  updatedAt    DateTime      @updatedAt @db.Timestamptz
+  transactions Transaction[]
+  categories   Category[]    @relation("parent")
+}
+
+enum TransactionKind {
+  INCOME
+  EXPENSE
+  TRANSFER
+}
+
+enum TransactionInterval {
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEARLY
+}
+
+model Transaction {
+  id         String               @id @default(cuid()) @db.VarChar(255)
+  name       String               @db.VarChar(255)
+  amount     Float
+  kind       TransactionKind
+  date       DateTime             @db.Date
+  scheduled  Boolean              @default(false)
+  interval   TransactionInterval?
+  startDate  DateTime?            @db.Timestamptz
+  endDate    DateTime?            @db.Timestamptz
+  createdAt  DateTime             @default(now()) @db.Timestamptz
+  updatedAt  DateTime             @updatedAt @db.Timestamptz
+  categoryId String               @db.VarChar(255)
+  category   Category             @relation(fields: [categoryId], references: [id])
+  accountId  String               @db.VarChar(255)
+  account    Account              @relation(fields: [accountId], references: [id])
+}
