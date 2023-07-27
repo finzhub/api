@@ -28,6 +28,7 @@
     "bun-types": "0.7.0",
     "eslint": "8.45.0",
     "eslint-config-prettier": "8.8.0",
+    "lefthook": "1.4.7",
     "prettier": "3.0.0",
     "prisma": "5.0.0",
     "typescript": "5.1.6"

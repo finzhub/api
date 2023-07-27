@@ -13,9 +13,7 @@ import {
 const typesArray = loadFilesSync(`${import.meta.dir}`, { extensions: ["gql"] });
 const resolversArray = loadFilesSync<IResolvers>(
   `${import.meta.dir}/**/*.resolvers.ts`,
-  {
-    extensions: ["ts"],
-  }
+  { extensions: ["ts"] },
 );
 
 const typeDefs = mergeTypeDefs([

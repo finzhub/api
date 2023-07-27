@@ -1,0 +1,9 @@
+pre-commit:
+  commands:
+    prettier:
+      glob: '*.ts'
+      run: bun prettier --ignore-unknown --write {staged_files} && git add {staged_files}
+
+    eslint:
+      glob: '*.ts'
+      run: bun eslint --fix {staged_files} && git add {staged_files}

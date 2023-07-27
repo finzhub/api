@@ -17,7 +17,7 @@ export const resolvers: Resolvers = {
     generateRegistrationOptions: async (
       _,
       { input },
-      { prisma, request, env }
+      { prisma, request, env },
     ) => {
       const user = await prisma.user.upsert({
         where: input,
@@ -88,7 +88,7 @@ export const resolvers: Resolvers = {
     generateAuthenticationOptions: async (
       _,
       { input },
-      { prisma, request, env }
+      { prisma, request, env },
     ) => {
       const user = await prisma.user.findFirstOrThrow({
         where: {

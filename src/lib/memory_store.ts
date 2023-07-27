@@ -2,12 +2,12 @@ import { Database } from "bun:sqlite";
 
 const store = new Database(":memory:");
 store.run(
-  "CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, value TEXT)"
+  "CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, value TEXT)",
 );
 
 export function cacheGet(key: string) {
   const query = store.query<{ value: string }, { $key: string }>(
-    "SELECT value FROM cache WHERE key = $key"
+    "SELECT value FROM cache WHERE key = $key",
   );
   const result = query.get({ $key: key });
 
@@ -19,7 +19,7 @@ export function cacheGet(key: string) {
 
 export function cacheSet(key: string, value: string) {
   const query = store.query<void, { $key: string; $value: string }>(
-    "INSERT INTO cache (key, value) VALUES ($key, $value) ON CONFLICT (key) DO UPDATE SET value = $value"
+    "INSERT INTO cache (key, value) VALUES ($key, $value) ON CONFLICT (key) DO UPDATE SET value = $value",
   );
 
   query.run({ $key: key, $value: value });
