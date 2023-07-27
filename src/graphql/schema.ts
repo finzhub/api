@@ -1,5 +1,6 @@
 import { loadFilesSync } from "@graphql-tools/load-files";
 import { mergeTypeDefs, mergeResolvers } from "@graphql-tools/merge";
+import type { IResolvers } from "@graphql-tools/utils";
 import { createSchema } from "graphql-yoga";
 import type { Context } from "./context";
 import {
@@ -10,9 +11,12 @@ import {
 } from "graphql-scalars";
 
 const typesArray = loadFilesSync(`${import.meta.dir}`, { extensions: ["gql"] });
-const resolversArray = loadFilesSync(`${import.meta.dir}/**/*.resolvers.ts`, {
-  extensions: ["ts"],
-});
+const resolversArray = loadFilesSync<IResolvers>(
+  `${import.meta.dir}/**/*.resolvers.ts`,
+  {
+    extensions: ["ts"],
+  }
+);
 
 const typeDefs = mergeTypeDefs([
   typesArray,
@@ -20,7 +24,7 @@ const typeDefs = mergeTypeDefs([
   VoidTypeDefinition,
 ]);
 
-const resolvers = mergeResolvers([
+const resolvers = mergeResolvers<unknown, Context>([
   ...resolversArray,
   { JSONObject: JSONObjectResolver },
   { Void: VoidResolver },

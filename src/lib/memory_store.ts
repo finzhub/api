@@ -26,9 +26,10 @@ export function cacheSet(key: string, value: string) {
 }
 
 export function cacheEntries() {
-  const query = store.query<{ key: string; value: string }, {}>(
-    "SELECT * FROM cache"
-  );
+  const query = store.query<
+    { key: string; value: string },
+    Record<string, never>
+  >("SELECT * FROM cache");
 
   return query.all({});
 }

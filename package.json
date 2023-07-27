@@ -23,7 +23,12 @@
     "@graphql-codegen/cli": "5.0.0",
     "@graphql-codegen/typescript": "4.0.1",
     "@graphql-codegen/typescript-resolvers": "4.0.1",
+    "@typescript-eslint/eslint-plugin": "6.2.0",
+    "@typescript-eslint/parser": "6.2.0",
     "bun-types": "0.7.0",
+    "eslint": "8.45.0",
+    "eslint-config-prettier": "8.8.0",
+    "prettier": "3.0.0",
     "prisma": "5.0.0",
     "typescript": "5.1.6"
   },

@@ -21,6 +21,11 @@ const config: CodegenConfig = {
         "typescript-resolvers",
         {
           add: {
+            content: "/* eslint-disable */",
+          },
+        },
+        {
+          add: {
             content: 'import type { Context } from "@/graphql/context";',
           },
         },
