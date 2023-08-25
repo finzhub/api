@@ -26,7 +26,7 @@ export const resolvers: Resolvers = {
         include: { credentials: true },
       });
 
-      const options = generateRegistrationOptions({
+      const options = await generateRegistrationOptions({
         rpID: env.DOMAIN,
         rpName: "Finz",
         userID: user.id,
@@ -97,7 +97,7 @@ export const resolvers: Resolvers = {
         include: { credentials: true },
       });
 
-      const options = generateAuthenticationOptions({
+      const options = await generateAuthenticationOptions({
         timeout: 60000,
         allowCredentials: user.credentials.map((credential) => ({
           id: credential.externalId,
