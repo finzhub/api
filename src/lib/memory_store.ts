@@ -34,10 +34,10 @@ export function cacheEntries() {
   return query.all({});
 }
 
-export const CHALLEGE_KEY_PREFIX = "challenge:";
+export const CHALLENGE_KEY_PREFIX = "challenge:";
 
 export function cacheGetChallenge(key: string) {
-  const challenge = cacheGet(CHALLEGE_KEY_PREFIX + key);
+  const challenge = cacheGet(CHALLENGE_KEY_PREFIX + key);
   if (!challenge) {
     throw new Error("No challenge found");
   }
@@ -45,5 +45,5 @@ export function cacheGetChallenge(key: string) {
 }
 
 export function cacheSetChallenge(key: string, value: string) {
-  cacheSet(`${CHALLEGE_KEY_PREFIX}${key}`, value);
+  cacheSet(`${CHALLENGE_KEY_PREFIX}${key}`, value);
 }

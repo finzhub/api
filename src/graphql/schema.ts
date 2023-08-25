@@ -11,7 +11,7 @@ import {
 } from "graphql-scalars";
 
 const typesArray = loadFilesSync(`${import.meta.dir}`, { extensions: ["gql"] });
-const resolversArray = loadFilesSync<IResolvers>(
+const resolversArray = loadFilesSync<IResolvers<unknown, Context>>(
   `${import.meta.dir}/**/*.resolvers.ts`,
   { extensions: ["ts"] },
 );

@@ -9,33 +9,34 @@
     "@envelop/generic-auth": "6.0.0",
     "@graphql-tools/load-files": "7.0.0",
     "@graphql-tools/schema": "10.0.0",
-    "@prisma/client": "5.0.0",
-    "@simplewebauthn/server": "7.4.0",
+    "@prisma/client": "5.2.0",
+    "@simplewebauthn/server": "8.0.1",
     "@whatwg-node/server-plugin-cookies": "1.0.2",
-    "graphql": "16.7.1",
+    "graphql": "16.8.0",
     "graphql-scalars": "1.22.2",
-    "graphql-yoga": "4.0.3",
-    "hono": "3.3.4",
-    "zod": "3.21.4"
+    "graphql-yoga": "4.0.4",
+    "hono": "3.5.4",
+    "zod": "3.22.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.6.7",
-    "@commitlint/config-conventional": "17.6.7",
+    "@commitlint/cli": "17.7.1",
+    "@commitlint/config-conventional": "17.7.0",
     "@graphql-codegen/add": "5.0.0",
     "@graphql-codegen/cli": "5.0.0",
     "@graphql-codegen/typescript": "4.0.1",
     "@graphql-codegen/typescript-resolvers": "4.0.1",
-    "@typescript-eslint/eslint-plugin": "6.3.0",
-    "@typescript-eslint/parser": "6.3.0",
-    "bun-types": "0.7.3",
-    "eslint": "8.46.0",
+    "@graphql-tools/utils": "10.0.5",
+    "@typescript-eslint/eslint-plugin": "6.4.1",
+    "@typescript-eslint/parser": "6.4.1",
+    "bun-types": "0.8.1",
+    "eslint": "8.48.0",
     "eslint-config-prettier": "9.0.0",
-    "lefthook": "1.4.8",
-    "prettier": "3.0.1",
-    "prisma": "5.1.1",
-    "typescript": "5.1.6"
+    "lefthook": "1.4.9",
+    "prettier": "3.0.2",
+    "prisma": "5.2.0",
+    "typescript": "5.2.2"
   },
   "resolutions": {
-    "graphql": "16.7.1"
+    "graphql": "16.8.0"
   }
 }
